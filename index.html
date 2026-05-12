@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Saniya Bekova — Portfolio</title>
+<meta name="description" content="Portfolio of Saniya Bekova — M.S. candidate in Data Analytics & Computational Social Science at UMass Amherst, with ten years of backend engineering experience." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #F7F5F0;
+    --ink: #181715;
+    --ink-soft: #4a4742;
+    --ink-mute: #8a857d;
+    --rule: #1817151a;
+    --rule-soft: #18171510;
+    --accent: oklch(0.45 0.10 155);
+    --accent-soft: oklch(0.92 0.04 155);
+    --paper: #FFFDF9;
+    --serif: 'Instrument Serif', 'Source Serif Pro', Georgia, serif;
+    --sans: 'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:80px;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;}
+  body{font-size:15px;line-height:1.55;}
+  a{color:inherit;text-decoration:none;}
+  a:hover{color:var(--accent);}
+
+  .page{max-width:1240px;margin:0 auto;padding:16px 56px 96px;}
+  .mono{font-family:var(--mono);font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-mute);}
+  .serif{font-family:var(--serif);font-weight:400;letter-spacing:-0.01em;}
+
+  /* nav */
+  nav.top{
+    display:flex;align-items:baseline;justify-content:space-between;
+    padding:20px 0 18px;border-bottom:1px solid var(--rule);
+    position:sticky;top:0;z-index:50;background:var(--bg);
+  }
+  nav.top .brand{font-family:var(--serif);font-size:22px;letter-spacing:-0.01em;}
+  nav.top .brand em{font-style:italic;color:var(--ink-soft);}
+  nav.top ul{list-style:none;margin:0;padding:0;display:flex;gap:28px;}
+  nav.top ul a{font-size:13px;color:var(--ink-soft);}
+  nav.top ul a:hover{color:var(--ink);}
+  nav.top .where{font-family:var(--mono);font-size:11px;color:var(--ink-mute);text-transform:uppercase;letter-spacing:0.06em;}
+  nav.top .where .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;transform:translateY(-1px);}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.4fr 1fr;gap:64px;padding:80px 0 72px;border-bottom:1px solid var(--rule);}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:88px;line-height:0.98;letter-spacing:-0.025em;margin:0 0 28px;}
+  .hero h1 em{font-style:italic;color:var(--accent);}
+  .hero .lede{font-size:18px;line-height:1.5;color:var(--ink-soft);max-width:42ch;}
+  .hero .lede strong{color:var(--ink);font-weight:500;}
+  .hero aside{border-left:1px solid var(--rule);padding-left:32px;display:flex;flex-direction:column;gap:24px;}
+  .hero aside .row{display:flex;flex-direction:column;gap:4px;}
+  .hero aside .row .k{font-family:var(--mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-mute);}
+  .hero aside .row .v{font-size:14px;color:var(--ink);}
+  .hero aside .row .v a{border-bottom:1px solid var(--rule);}
+
+  /* section header */
+  .sec{padding:88px 0 24px;display:grid;grid-template-columns:1fr 3fr;gap:64px;align-items:baseline;border-bottom:1px solid var(--rule);}
+  .sec h2{font-family:var(--serif);font-size:42px;font-weight:400;margin:0;letter-spacing:-0.02em;line-height:1;}
+  .sec h2 em{font-style:italic;color:var(--ink-mute);}
+  .sec .sub{font-size:14px;color:var(--ink-soft);max-width:60ch;}
+  .sec .idx{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:10px;}
+
+  /* selected work */
+  .featured{display:flex;flex-direction:column;}
+  .feat{
+    display:grid;grid-template-columns:1fr 1.1fr;gap:56px;
+    padding:48px 0;border-bottom:1px solid var(--rule);align-items:start;
+  }
+  .feat:last-child{border-bottom:none;}
+  .feat .meta{display:flex;flex-direction:column;gap:18px;position:sticky;top:96px;}
+  .feat .num{font-family:var(--mono);font-size:11px;color:var(--ink-mute);letter-spacing:0.1em;}
+  .feat h3{font-family:var(--serif);font-size:38px;font-weight:400;line-height:1.02;letter-spacing:-0.015em;margin:0;}
+  .feat h3 em{font-style:italic;}
+  .feat .tagline{font-size:15px;color:var(--ink-soft);max-width:42ch;}
+  .feat .stack{display:flex;flex-wrap:wrap;gap:6px;}
+  .feat .stack span{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:0.04em;text-transform:uppercase;
+    padding:4px 9px;border:1px solid var(--rule);border-radius:999px;color:var(--ink-soft);
+  }
+  .feat .links{display:flex;gap:18px;font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;}
+  .feat .links a{display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid var(--rule);padding-bottom:2px;}
+  .feat .links a:hover{border-color:var(--accent);}
+  .feat .body{display:flex;flex-direction:column;gap:24px;}
+
+  .preview{
+    background:var(--paper);border:1px solid var(--rule);border-radius:6px;
+    aspect-ratio:16/10;display:flex;flex-direction:column;overflow:hidden;
+    box-shadow: 0 1px 0 var(--rule), 0 30px 60px -40px rgba(0,0,0,0.18);
+  }
+  .preview .chrome{display:flex;gap:6px;padding:9px 12px;border-bottom:1px solid var(--rule);}
+  .preview .chrome span{width:9px;height:9px;border-radius:50%;background:var(--rule);}
+  .preview .body{flex:1;padding:18px;display:flex;flex-direction:column;gap:12px;}
+
+  .write{display:flex;flex-direction:column;gap:22px;}
+  .write h4{font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 4px;font-weight:500;}
+  .write p{margin:0;font-size:15px;line-height:1.6;color:var(--ink-soft);text-wrap:pretty;}
+  .write p strong{color:var(--ink);font-weight:500;}
+  .write ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .write ul li{padding-left:20px;position:relative;font-size:14.5px;color:var(--ink-soft);line-height:1.55;}
+  .write ul li::before{content:"";position:absolute;left:0;top:10px;width:10px;height:1px;background:var(--ink-mute);}
+  .write ul li strong{color:var(--ink);font-weight:500;}
+
+  .results{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+  .results .cell{padding:18px 18px 18px 0;border-right:1px solid var(--rule);}
+  .results .cell:last-child{border-right:none;}
+  .results .num{font-family:var(--serif);font-size:36px;line-height:1;color:var(--ink);letter-spacing:-0.02em;}
+  .results .num small{font-size:18px;color:var(--ink-mute);}
+  .results .lbl{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-mute);margin-top:8px;}
+
+  /* other projects grid */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--rule);margin-top:32px;}
+  .card{padding:28px 0;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:14px;cursor:pointer;transition:transform 0.2s ease;}
+  .card:nth-child(odd){padding-right:32px;border-right:1px solid var(--rule);}
+  .card:nth-child(even){padding-left:32px;}
+  .card:hover{transform:translateY(-2px);}
+  .card:hover h4{color:var(--accent);}
+  .card .head{display:flex;align-items:baseline;justify-content:space-between;}
+  .card h4{font-family:var(--serif);font-size:24px;font-weight:400;margin:0;letter-spacing:-0.01em;transition:color 0.2s;}
+  .card .yr{font-family:var(--mono);font-size:11px;color:var(--ink-mute);letter-spacing:0.06em;}
+  .card p{margin:0;font-size:14px;color:var(--ink-soft);line-height:1.55;max-width:48ch;}
+  .card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px;}
+  .card .tags span{font-family:var(--mono);font-size:10px;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-mute);}
+  .card .tags span:not(:last-child)::after{content:"·";margin-left:6px;color:var(--rule);}
+
+  /* about / skills */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;padding:40px 0 24px;}
+  .about-grid .col h3{font-family:var(--serif);font-size:28px;font-weight:400;margin:0 0 20px;letter-spacing:-0.015em;}
+  .about-grid p{font-size:15.5px;line-height:1.65;color:var(--ink-soft);margin:0 0 14px;text-wrap:pretty;}
+  .about-grid p strong{color:var(--ink);font-weight:500;}
+  .skills{display:flex;flex-direction:column;gap:14px;}
+  .skills .row{display:grid;grid-template-columns:130px 1fr;gap:18px;align-items:baseline;padding-bottom:12px;border-bottom:1px solid var(--rule-soft);}
+  .skills .row:last-child{border-bottom:none;}
+  .skills .row .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-mute);}
+  .skills .row .val{font-size:14px;color:var(--ink);line-height:1.6;}
+
+  /* contact */
+  .contact{padding:96px 0 24px;border-top:1px solid var(--rule);margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;}
+  .contact h2{font-family:var(--serif);font-size:88px;font-weight:400;margin:0;line-height:0.95;letter-spacing:-0.025em;max-width:9ch;}
+  .contact h2 em{font-style:italic;color:var(--accent);}
+  .contact .links{display:flex;flex-direction:column;gap:10px;}
+  .contact .links a{display:flex;align-items:baseline;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--rule);font-size:18px;font-family:var(--serif);}
+  .contact .links a .arr{font-family:var(--mono);font-size:11px;color:var(--ink-mute);letter-spacing:0.06em;}
+  .contact .links a:hover .arr{color:var(--accent);}
+
+  footer{display:flex;justify-content:space-between;padding-top:32px;border-top:1px solid var(--rule);margin-top:32px;font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-mute);flex-wrap:wrap;gap:12px;}
+
+  /* preview content (project-specific) */
+  .pv-head{display:flex;justify-content:space-between;align-items:baseline;}
+  .pv-head .t{font-family:var(--serif);font-size:18px;}
+  .pv-head .m{font-family:var(--mono);font-size:10px;color:var(--ink-mute);letter-spacing:0.05em;text-transform:uppercase;}
+  .pv-bars{display:flex;align-items:flex-end;gap:8px;height:120px;padding:8px 0;}
+  .pv-bars .bar{flex:1;background:var(--accent);opacity:0.75;border-radius:2px 2px 0 0;}
+  .pv-bars .bar.dim{opacity:0.25;background:var(--ink);}
+  .pv-axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;color:var(--ink-mute);letter-spacing:0.05em;text-transform:uppercase;}
+  .pv-pipe{display:flex;align-items:center;gap:8px;flex:1;flex-wrap:wrap;}
+  .pv-pipe .stage{flex:1;min-width:60px;border:1px solid var(--rule);border-radius:4px;padding:8px 10px;display:flex;flex-direction:column;gap:4px;background:var(--bg);}
+  .pv-pipe .stage .lab{font-family:var(--mono);font-size:9px;color:var(--ink-mute);letter-spacing:0.06em;text-transform:uppercase;}
+  .pv-pipe .stage .v{font-family:var(--serif);font-size:17px;line-height:1;}
+  .pv-pipe .arr{font-family:var(--mono);font-size:12px;color:var(--ink-mute);}
+  .pv-loss{flex:1;position:relative;min-height:120px;}
+  .pv-loss svg{width:100%;height:100%;}
+
+  /* responsive */
+  @media (max-width: 920px){
+    .page{padding:8px 22px 64px;}
+    nav.top{padding:14px 0 12px;}
+    nav.top{flex-wrap:wrap;gap:12px;}
+    nav.top ul{order:3;width:100%;gap:18px;flex-wrap:wrap;}
+    .hero{grid-template-columns:1fr;gap:36px;padding:48px 0 48px;}
+    .hero h1{font-size:54px;}
+    .hero aside{border-left:none;border-top:1px solid var(--rule);padding-left:0;padding-top:24px;}
+    .sec{grid-template-columns:1fr;gap:18px;padding:56px 0 16px;}
+    .sec h2{font-size:32px;}
+    .feat{grid-template-columns:1fr;gap:28px;}
+    .feat .meta{position:static;}
+    .feat h3{font-size:28px;}
+    .grid{grid-template-columns:1fr;}
+    .card:nth-child(odd){padding-right:0;border-right:none;}
+    .card:nth-child(even){padding-left:0;}
+    .about-grid{grid-template-columns:1fr;gap:32px;}
+    .contact{grid-template-columns:1fr;gap:32px;}
+    .contact h2{font-size:54px;}
+    .results{grid-template-columns:1fr;}
+    .results .cell{border-right:none;border-bottom:1px solid var(--rule);padding:14px 0;}
+    .results .cell:last-child{border-bottom:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <nav class="top">
+    <div class="brand">Saniya <em>Bekova</em></div>
+    <ul>
+      <li><a href="#work">Selected work</a></li>
+      <li><a href="#projects">All projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="where"><span class="dot"></span>DACSS · UMass Amherst</div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h1>Data systems, <em>applied ML</em>, and questions worth <em>asking</em>.</h1>
+      <p class="lede"><strong>Saniya Bekova</strong> — M.S. candidate in Data Analytics &amp; Computational Social Science at UMass Amherst, with ten years of production backend engineering at Kazakh banks behind it. I build reproducible data pipelines and applied machine-learning systems on problems in language, education, and finance.</p>
+    </div>
+    <aside>
+      <div class="row"><span class="k">Role</span><span class="v">Software engineer · M.S. candidate</span></div>
+      <div class="row"><span class="k">Program</span><span class="v">M.S. DACSS · 2024–2026</span></div>
+      <div class="row"><span class="k">Focus</span><span class="v">Data engineering · applied ML · NLP</span></div>
+      <div class="row"><span class="k">Stack</span><span class="v">Python · R · Spark · PyTorch · PostgreSQL</span></div>
+      <div class="row"><span class="k">Code</span><span class="v"><a href="https://github.com/SaniyaBekova" target="_blank" rel="noopener">github.com/SaniyaBekova ↗</a></span></div>
+      <div class="row"><span class="k">LinkedIn</span><span class="v"><a href="https://linkedin.com/in/saniya-bekova" target="_blank" rel="noopener">/in/saniya-bekova ↗</a></span></div>
+    </aside>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section id="work" class="sec">
+    <div>
+      <div class="idx">§ 01 / Selected work</div>
+      <h2>Featured <em>projects</em>.</h2>
+    </div>
+    <div class="sub">Two projects from the last year I'd want to talk through in detail. Both are reproducible end-to-end; code and write-ups linked below.</div>
+  </section>
+
+  <div class="featured">
+
+    <!-- FEATURED 1 — Kazakh LLM -->
+    <article class="feat">
+      <div class="meta">
+        <div class="num">01 — 2025</div>
+        <h3>Fine-tuning an <em>LLM</em> to tell Kazakh stories.</h3>
+        <p class="tagline">A small-scale SFT + DPO pipeline adapting an open Llama-3.1 model to generate structured Kazakh-language children's stories.</p>
+        <div class="stack">
+          <span>PyTorch</span><span>HuggingFace</span><span>QLoRA</span><span>SFT</span><span>DPO</span><span>BERTScore</span>
+        </div>
+        <div class="links">
+          <a href="https://github.com/SaniyaBekova/kazakh-llm-finetuning" target="_blank" rel="noopener">Repo →</a>
+        </div>
+      </div>
+      <div class="body">
+        <div class="preview">
+          <div class="chrome"><span></span><span></span><span></span></div>
+          <div class="body">
+            <div class="pv-head"><div class="t">Three-stage training pipeline</div><div class="m">QLoRA · 4-bit</div></div>
+            <div class="pv-loss">
+              <svg viewBox="0 0 400 130" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <defs><pattern id="g" width="40" height="26" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 26" fill="none" stroke="var(--rule-soft)" stroke-width="0.5"/></pattern></defs>
+                <rect width="400" height="130" fill="url(#g)"/>
+                <path d="M 0 28 Q 60 38 120 56 T 240 82 T 400 98" stroke="var(--accent)" stroke-width="1.8" fill="none"/>
+                <path d="M 0 40 Q 60 56 120 74 T 240 96 T 400 112" stroke="var(--ink)" stroke-width="1" fill="none" stroke-dasharray="3 3" opacity="0.5"/>
+                <line x1="133" y1="0" x2="133" y2="130" stroke="var(--rule)" stroke-dasharray="2 2"/>
+                <line x1="266" y1="0" x2="266" y2="130" stroke="var(--rule)" stroke-dasharray="2 2"/>
+                <text x="40" y="14" font-family="JetBrains Mono" font-size="8" fill="var(--ink-mute)">SFT</text>
+                <text x="170" y="14" font-family="JetBrains Mono" font-size="8" fill="var(--ink-mute)">DPO · pref. pairs</text>
+                <text x="300" y="14" font-family="JetBrains Mono" font-size="8" fill="var(--ink-mute)">eval</text>
+              </svg>
+            </div>
+            <div class="pv-axis"><span>base</span><span>after SFT</span><span>after DPO</span><span>judged</span></div>
+          </div>
+        </div>
+
+        <div class="write">
+          <div>
+            <h4>Question</h4>
+            <p>Can a Llama-3.1 base model be adapted, on consumer hardware, to produce <strong>structurally coherent Kazakh-language stories</strong> — when public training data in Kazakh is sparse and most NLP tooling is built around English?</p>
+          </div>
+          <div>
+            <h4>Approach</h4>
+            <ul>
+              <li>Scraped <strong>1,000+ Kazakh-language stories</strong> from three sources; applied MinHash deduplication and cleaned the output into a curated training corpus.</li>
+              <li>Built a <strong>240-story annotated corpus</strong> with control tags (age, theme, length, seed); manually annotated 40 stories with structured gold plans.</li>
+              <li>Implemented <strong>SFT</strong> and <strong>DPO post-training</strong> on Llama-3.1-KazLLM-1.0-8B via QLoRA (4-bit quantization). DPO preference pairs were constructed using BERTScore F1 against the gold plans (xlm-roberta-base, lang='kk').</li>
+              <li>Evaluated three models against each other with automatic metrics, human judgement on a small rubric, and <strong>LLM-as-judge</strong> (GPT-4, Gemini).</li>
+            </ul>
+          </div>
+          <div class="results">
+            <div class="cell"><div class="num">1,000<small>+</small></div><div class="lbl">stories scraped</div></div>
+            <div class="cell"><div class="num">240</div><div class="lbl">curated training corpus</div></div>
+            <div class="cell"><div class="num">3</div><div class="lbl">models compared</div></div>
+          </div>
+          <div>
+            <h4>Why it matters for DACSS</h4>
+            <p>Most NLP tooling, datasets, and methodological norms are built around English. Building reliable pipelines for a <strong>low-resource language</strong> like Kazakh is a prerequisite for any serious NLP application to Central Asian text — news, public records, oral histories. This project is a small step in that direction.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- FEATURED 2 — IMO Education -->
+    <article class="feat">
+      <div class="meta">
+        <div class="num">02 — 2025</div>
+        <h3>Does spending on <em>education</em> predict math-olympiad outcomes?</h3>
+        <p class="tagline">A country-year predictive model linking World Bank education indicators to International Mathematical Olympiad results.</p>
+        <div class="stack">
+          <span>R</span><span>tidymodels</span><span>LightGBM</span><span>tidyverse</span>
+        </div>
+        <div class="links">
+          <a href="https://github.com/SaniyaBekova/imo-education-analysis" target="_blank" rel="noopener">Repo →</a>
+        </div>
+      </div>
+      <div class="body">
+        <div class="preview">
+          <div class="chrome"><span></span><span></span><span></span></div>
+          <div class="body">
+            <div class="pv-head"><div class="t">Model performance vs. baseline</div><div class="m">LightGBM · 5-fold CV</div></div>
+            <div class="pv-bars">
+              <div class="bar" style="height:92%"></div>
+              <div class="bar" style="height:84%"></div>
+              <div class="bar" style="height:76%"></div>
+              <div class="bar" style="height:62%"></div>
+              <div class="bar" style="height:50%"></div>
+              <div class="bar dim" style="height:42%"></div>
+              <div class="bar dim" style="height:36%"></div>
+              <div class="bar dim" style="height:28%"></div>
+              <div class="bar dim" style="height:22%"></div>
+              <div class="bar dim" style="height:16%"></div>
+            </div>
+            <div class="pv-axis"><span>top features</span><span>·</span><span>·</span><span>weaker signal</span></div>
+          </div>
+        </div>
+
+        <div class="write">
+          <div>
+            <h4>Question</h4>
+            <p>How much of a country's performance at the <strong>International Mathematical Olympiad</strong> can be explained by structural education indicators — public spending on education, enrolment rates, GDP per capita — and how much is essentially noise?</p>
+          </div>
+          <div>
+            <h4>Approach</h4>
+            <ul>
+              <li>Constructed a <strong>country–year panel dataset</strong> linking World Bank education and macro indicators to IMO results, with careful entity resolution across data sources and structured handling of missingness.</li>
+              <li>Tuned a <strong>LightGBM regressor</strong> using <strong>R + tidymodels</strong> with cross-validation; compared against a linear-regression baseline.</li>
+              <li>Inspected variable importance and partial-dependence patterns to identify which indicators carry signal beyond GDP.</li>
+            </ul>
+          </div>
+          <div class="results">
+            <div class="cell"><div class="num">0.68<small> R²</small></div><div class="lbl">on held-out folds</div></div>
+            <div class="cell"><div class="num">4.71</div><div class="lbl">RMSE · 3.11 MAE</div></div>
+            <div class="cell"><div class="num">+27<small>%</small></div><div class="lbl">improvement over baseline</div></div>
+          </div>
+          <div>
+            <h4>What I'd extend</h4>
+            <p>Move from prediction toward <strong>causal estimation</strong> — a difference-in-differences specification around curriculum reforms, with the gradient-boosted model retained as a falsification benchmark for the linear specification.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- ALL PROJECTS -->
+  <section id="projects" class="sec" style="grid-template-columns:1fr;">
+    <div>
+      <div class="idx">§ 02 / All projects</div>
+      <h2>Also <em>shipped</em>.</h2>
+    </div>
+  </section>
+
+  <div class="grid">
+    <a class="card" href="https://github.com/SaniyaBekova/nyc-taxi-etl" target="_blank" rel="noopener">
+      <div class="head">
+        <h4>NYC taxi batch ETL pipeline</h4>
+        <span class="yr">2025</span>
+      </div>
+      <p>Production-grade Spark batch pipeline on the multi-million-row NYC TLC dataset: distributed type casting, null filtering, feature engineering, and Spark JDBC loads into PostgreSQL. Full stack containerised with Docker Compose for one-command reproducible deployment; raw and curated data layers cleanly separated.</p>
+      <div class="tags"><span>Apache Spark</span><span>PostgreSQL</span><span>Docker Compose</span></div>
+    </a>
+
+    <a class="card" href="https://github.com/SaniyaBekova/diabetes-prediction" target="_blank" rel="noopener">
+      <div class="head">
+        <h4>Diabetes risk REST API</h4>
+        <span class="yr">2025</span>
+      </div>
+      <p>End-to-end clinical-decision-support prototype. RandomForestClassifier (77% accuracy, 0.75 F1) served behind a Flask REST API with /predict and /reload endpoints; PostgreSQL feature store, Streamlit UI, Swagger docs, deployed to Render. pytest integration tests cover endpoint contracts, online retraining, and 400 error handling.</p>
+      <div class="tags"><span>scikit-learn</span><span>Flask</span><span>PostgreSQL</span><span>pytest</span><span>Render</span></div>
+    </a>
+
+    <a class="card" href="https://github.com/SaniyaBekova/cinema-affordability-kz" target="_blank" rel="noopener">
+      <div class="head">
+        <h4>Cinema affordability across Kazakhstan</h4>
+        <span class="yr">2025</span>
+      </div>
+      <p>Personal project asking how many minutes of work it takes to afford a movie ticket in different Kazakh cities. Scraped real cinema schedules from 10+ cities with Selenium, merged with city-level average-salary data, and built an interactive Streamlit + Plotly dashboard with per-city drill-down. Deployed live on Streamlit Cloud.</p>
+      <div class="tags"><span>Selenium</span><span>pandas</span><span>Streamlit</span><span>Plotly</span></div>
+    </a>
+
+    <a class="card" href="https://github.com/SaniyaBekova/Nobel_Prize" target="_blank" rel="noopener">
+      <div class="head">
+        <h4>Nobel Prize laureates — exploratory analysis</h4>
+        <span class="yr">2024</span>
+      </div>
+      <p>Exploratory analysis of Nobel Prize winners over time: country dominance, category breakdowns, age and gender distributions, and historical patterns. Joined the laureate dataset with World Bank GDP and population data for per-capita normalisation; outputs include an interactive map and a bar-race animation.</p>
+      <div class="tags"><span>Python</span><span>pandas</span><span>Plotly</span><span>Jupyter</span></div>
+    </a>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="sec" style="grid-template-columns:1fr;">
+    <div>
+      <div class="idx">§ 03 / About</div>
+      <h2>Background.</h2>
+    </div>
+  </section>
+
+  <div class="about-grid">
+    <div class="col">
+      <p>I spent ten years as a backend engineer at <strong>Halyk Bank</strong> and <strong>ATF Bank</strong> — Kazakhstan's largest bank and one of its top commercial banks. The work was mostly in regulated financial systems: a CQRS / Kafka migration that cut mortgage approval time from two weeks to two or three days, a RabbitMQ event mesh that brought loan-issuance latency down by about 70%, a Go-and-Kafka platform that onboarded a thousand-plus enterprise clients onto a previously paper-based tender process.</p>
+      <p>I came to DACSS to broaden the data-and-ML side of that work — to build modeling, NLP, and analytics skills on top of the engineering foundation, with the time and structure of a graduate program to do it carefully. The projects on this page sit at that seam: a low-resource NLP pipeline on Kazakh, a predictive model on a country-panel education dataset, and the engineering scaffolding (ETL, REST APIs, tests) that lets any of it be reproduced.</p>
+    </div>
+    <div class="col">
+      <h3>Toolkit</h3>
+      <div class="skills">
+        <div class="row"><div class="lab">Languages</div><div class="val">Python · R · SQL · PL/SQL · Go · C#</div></div>
+        <div class="row"><div class="lab">ML / NLP</div><div class="val">PyTorch · scikit-learn · HuggingFace · QLoRA · SFT · DPO · LightGBM · BERTScore</div></div>
+        <div class="row"><div class="lab">Data</div><div class="val">Apache Spark · Kafka · RabbitMQ · PostgreSQL · Oracle · MSSQL · Prefect · pandas</div></div>
+        <div class="row"><div class="lab">Backend</div><div class="val">Microservices · CQRS · Event sourcing · REST / SOAP · .NET Core · Flask</div></div>
+        <div class="row"><div class="lab">Ship</div><div class="val">Docker · AWS (EC2, RDS) · Git · pytest · Camunda 7</div></div>
+        <div class="row"><div class="lab">Languages (human)</div><div class="val">Kazakh · Russian · English</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <h2>Let's <em>talk</em>.</h2>
+    <div class="links">
+      <a href="mailto:saniyabekova@gmail.com">saniyabekova@gmail.com <span class="arr">EMAIL ↗</span></a>
+      <a href="https://github.com/SaniyaBekova" target="_blank" rel="noopener">github.com/SaniyaBekova <span class="arr">CODE ↗</span></a>
+      <a href="https://linkedin.com/in/saniya-bekova" target="_blank" rel="noopener">linkedin.com/in/saniya-bekova <span class="arr">CV ↗</span></a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Saniya Bekova</span>
+    <span>Last updated · May 2026</span>
+    <span>Amherst, MA</span>
+  </footer>
+</div>
+
+</body>
+</html>
